@@ -1,0 +1,9 @@
+*.iws
+eclipse
+stacktrace.log
+target
+target-eclipse
+/plugins
+.settings
+web-app/plugins/
+web-app/WEB-INF/classes/
