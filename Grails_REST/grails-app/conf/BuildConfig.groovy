@@ -1,3 +1,9 @@
+/* (non-Javadoc)
+ * @see groovy.lang.Script#run()
+ */
+/* (non-Javadoc)
+ * @see groovy.lang.Script#run()
+ */
 grails.servlet.version = "2.5" // Change depending on target container compliance (2.5 or 3.0)
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
@@ -44,3 +50,5 @@ grails.project.dependency.resolution = {
         build ":tomcat:$grailsVersion"
     }
 }
+
+//grails.plugin.cloudfoundry.target = "api.cloudfoundry.me"
