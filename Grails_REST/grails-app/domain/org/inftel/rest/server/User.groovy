@@ -8,7 +8,7 @@ class User {
 	Profile profile
 
 	static constraints = {
-		userId(size:3..20, unique: true)
+		userId(size: 3..20, unique: true)
 		password(size: 6..14, validator: { passwd, user ->
 			passwd != user.userId
 		})

@@ -23,6 +23,11 @@ class UserTests {
 		assertEquals "nullable", testUser.errors["userId"] 
 		assertEquals "nullable", testUser.errors["password"]
 		
+		// La validacion debe fallar porque el nombre de usuario es muy largo
+		testUser = new User(userId: "user_with_a_very_long_user_id", password: "secret")
+		assert !testUser.validate()
+		assertEquals "size", testUser.errors["userId"]
+		
 		// La validacion debe fallar porque el usuario y la pass son iguales
 		testUser = new User(userId: "william", password: "william") 
 		assert !testUser.validate()
