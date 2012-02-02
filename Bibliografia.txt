@@ -1,0 +1,5 @@
+Bibliografía para el Tutorial de REST:
+- How I Explained REST to My Wife (http://tomayko.com/writings/rest-to-my-wife): Simple explanation of what REST is and why it's important
+
+Bibliografía para el Ejemplo de REST:
+- Grails in Action. Capítulo 11: Remote Access.
