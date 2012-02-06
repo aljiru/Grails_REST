@@ -1,5 +1,12 @@
 Bibliografía para el Tutorial de REST:
 - How I Explained REST to My Wife (http://tomayko.com/writings/rest-to-my-wife): Simple explanation of what REST is and why it's important
+- Fielding, Roy Thomas (2000), Architectural Styles and the Design of Network-based Software Architectures (http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+- Artículo sobre REST (Cap 1: http://www.infoq.com/articles/rest-introduction - Cap 2: http://www.infoq.com/articles/tilkov-rest-doubts - Cap 3: http://www.infoq.com/articles/rest-anti-patterns)
+- Wikipedia REST: http://en.wikipedia.org/wiki/Representational_state_transfer
+- Wikipedia RPC: http://en.wikipedia.org/wiki/Remote_procedure_call
+- Wikipedia MOM: http://en.wikipedia.org/wiki/Message-oriented_middleware
+- Wikipedia Web Service: http://en.wikipedia.org/wiki/Web_service 
+- Presentación OAuth: http://www.infoq.com/presentations/The-Rise-of-OAuth
 
 Bibliografía para el Ejemplo de REST:
 - Grails in Action. Capítulo 11: Remote Access.
