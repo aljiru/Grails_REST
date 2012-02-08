@@ -8,7 +8,5 @@ class Presentation {
 	
 	static constraints = {
 		id (size:3..100, unique: true) 
-		password(size: 6..8)
-		homepage(url: true, nullable: true)
 	}
 }
