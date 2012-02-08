@@ -5,11 +5,11 @@ class UrlMappings {
 		}
 		
 		"/presentations"(controller: "presentationRest") {
-			action = [ GET: "findAll", POST: "save" ]
+			action = [ GET: "findAll", POST: "create" ]
 		}
 
 		"/presentations/$id"(controller: "presentationRest") {
-			action = [ GET: "findOne", PUT: "update", DELETE: "delete" ]
+			action = [ GET: "findOne", PUT: "update", DELETE: "destroy" ]
 		}
 
 		"/"(view:"/index")
