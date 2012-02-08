@@ -1,4 +1,4 @@
-//js slides/scripts/build.js
+//steal/js slides/scripts/compress.js
 
 load("steal/rhino/rhino.js");
 steal('steal/build').then('steal/build/scripts','steal/build/styles',function(){
