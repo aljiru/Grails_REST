@@ -42,12 +42,15 @@ steal(
 			$(configDialogSelector).dialog("close");
 			if (user.type == "present") { // present
 				var presentation = new Slides.Models.Presentation({
-					id : user.presentation, currentSlide: internalCurrentSlide()
+					name : user.session, currentSlide: internalCurrentSlide()
 				});
-				presentation.save(function(saved) { 
-					presentation = saved; 
-					steal.dev.log("presentation saved " + saved);
+				presentation.save(function(){
+					steal.dev.log("saved presentation " + presentation.id);
 				});
+				Slides.Models.Presentation.findAll({name: user.session}, function(saved){
+					presentation.attr("id",saved[0].id);
+				});
+				
 				
 				// Interceptamos las actualizaciones de curSlide
 				$(document).on('slideenter', function(){
