@@ -51,7 +51,7 @@ steal(
 				
 				// Interceptamos las actualizaciones de curSlide
 				$(document).on('slideenter', function(){
-					presentation.attr('currentSlide', internalCurrentSlide()).save();
+					presentation.update({'currentSlide': internalCurrentSlide()});
 				});
 
 			} else { // view
