@@ -9,8 +9,10 @@ class PresentationRestController {
 	def findAll() {
 		log.info("Buscando todos: " + params)
 		if (params.containsKey("name")) {
+			def ps = []
 			Presentation p = Presentation.findByName(params.name)
-			render p.all as JSON
+			ps << p
+			render ps as JSON
 		} else {
 			render Presentation.list() as JSON
 		} 
@@ -25,15 +27,15 @@ class PresentationRestController {
 	def create() {
 		log.info("Añadiendo: " + params)
 		Presentation p = new Presentation(params)
-		p.save()
+		p.save(flush: true)
 		render p as JSON
 	}
 
 	def update() {
 		log.info("Actualizando: " + params)
 		Presentation p = Presentation.get(params.id)
-		p.merge(params)
-		log.info(p)
+		p.setCurrentSlide(Integer.parseInt(params.get("currentSlide")))
+		p.save(flush: true)
 		render ""
 	}
 
