@@ -46,10 +46,11 @@ steal(
 				});
 				presentation.save(function(){
 					steal.dev.log("saved presentation " + presentation.id);
+					Slides.Models.Presentation.findAll({name: user.session}, function(saved){
+						presentation.attr("id",saved[0].id);
+					});
 				});
-				Slides.Models.Presentation.findAll({name: user.session}, function(saved){
-					presentation.attr("id",saved[0].id);
-				});
+				
 				
 				
 				// Interceptamos las actualizaciones de curSlide
