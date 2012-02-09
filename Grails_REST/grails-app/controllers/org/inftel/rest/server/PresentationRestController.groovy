@@ -34,9 +34,8 @@ class PresentationRestController {
 	def update() {
 		log.info("Actualizando: " + params)
 		Presentation p = Presentation.get(params.id)
-		p.merge(params)
-		p.save()
-		log.info(p)
+		p.setCurrentSlide(Integer.parseInt(params.get("currentSlide")))
+		p.save(flush: true)
 		render ""
 	}
 
