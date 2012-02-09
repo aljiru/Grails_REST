@@ -44,7 +44,10 @@ steal(
 				var presentation = new Slides.Models.Presentation({
 					id : user.presentation, currentSlide: internalCurrentSlide()
 				});
-				presentation.save();
+				presentation.save(function(saved) { 
+					presentation = saved; 
+					steal.dev.log("presentation saved " + saved);
+				});
 				
 				// Interceptamos las actualizaciones de curSlide
 				$(document).on('slideenter', function(){
