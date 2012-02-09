@@ -24,7 +24,7 @@ $.Controller('Slides.User.Create',
 	},
 	saved : function(){
 		this.element.find('[type=submit]').val('Sincronizar');
-		this.element[0].reset()
+		//this.element[0].reset()
 	}
 })
 

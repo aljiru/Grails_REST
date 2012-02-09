@@ -9,11 +9,11 @@ steal('jquery/model', function() {
 	$.Model('Slides.Models.Presentation',
 	/* @Static */
 	{
-		findAll : "/presentations.json",
-		findOne : "/presentations/{id}.json",
-		create : "/presentations.json",
-		update : "/presentations/{id}.json",
-		destroy : "/presentations/{id}.json",
+		findAll : "../presentations",
+		findOne : "../presentations/{id}",
+		create : "../presentations",
+		update : "../presentations/{id}",
+		destroy : "../presentations/{id}",
 		poll : function(startIndex, success, error) {
 			// similar to findAll but polls the server and returns array of 'MyApp.Models.Notification objects
 		}
