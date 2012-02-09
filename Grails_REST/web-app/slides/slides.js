@@ -31,9 +31,13 @@ steal(
 	    //$('#users').slides_user_list();
 		//$('#create').slides_user_create();
 		
+		var user = new Slides.Models.User();
+		
 		var configDialogSelector = '#config-dialog';
-		$(configDialogSelector).slides_user_create();
-		Slides.Models.User.bind('created', function(ev, user){
+		$(configDialogSelector).slides_user_create(user);
+		
+		// Listen to user updates
+		Slides.Models.User.bind('sync', function(ev, user){
 			// A partir de aqui crear/sincronizar presentation
 			$(configDialogSelector).dialog("close");
 			if (user.type == "present") { // present

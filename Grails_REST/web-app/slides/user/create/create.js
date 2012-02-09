@@ -20,12 +20,10 @@ $.Controller('Slides.User.Create',
 	submit : function(el, ev){
 		ev.preventDefault();
 		this.element.find('[type=submit]').val('Sincronizando...')
-		new Slides.Models.User(el.formParams()).save(this.callback('saved'));
-	},
-	saved : function(){
+		var user = new Slides.Models.User(el.formParams());
+		$([Slides.Models.User]).trigger("sync",user);
 		this.element.find('[type=submit]').val('Sincronizar');
-		//this.element[0].reset()
-	}
+	},
 })
 
 });
