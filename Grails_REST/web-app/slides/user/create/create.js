@@ -16,9 +16,11 @@ $.Controller('Slides.User.Create',
 {
 	init : function(){
 		this.element.html(this.view());
+		this.element.dialog({modal:true});
 	},
 	submit : function(el, ev){
 		ev.preventDefault();
+		this.element.dialog('close');
 		this.element.find('[type=submit]').val('Sincronizando...')
 		var user = new Slides.Models.User(el.formParams());
 		$([Slides.Models.User]).trigger("sync",user);

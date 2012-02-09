@@ -13,12 +13,12 @@ steal(
 	'./plugins/jquery.periodicalupdater.js',
 	function(){					// configure your application
 		
+		// Se encarga de comunicarse con slides.js (libreria google)
 		var internalCurrentSlide = function(number) {
 			// esto debe buscar o modificar el numero de slide actual
 			if (typeof number == "undefined" ) {
 				return curSlide;
 			} else {
-				// set current slide
 				console.log("movido a diapositiva " + number);
 				if (curSlide != number) {
 					setCurSlide(number);
@@ -31,10 +31,8 @@ steal(
 	    //$('#users').slides_user_list();
 		//$('#create').slides_user_create();
 		
-		var user = new Slides.Models.User();
-		
 		var configDialogSelector = '#config-dialog';
-		$(configDialogSelector).slides_user_create(user);
+		$(configDialogSelector).slides_user_create();
 		
 		// Listen to user updates
 		Slides.Models.User.bind('sync', function(ev, user){
@@ -43,15 +41,13 @@ steal(
 			if (user.type == "present") { // present
 				var presentation = new Slides.Models.Presentation({
 					name : user.session, currentSlide: internalCurrentSlide()
-				});
+					});
 				presentation.save(function(){
 					steal.dev.log("saved presentation " + presentation.id);
 					Slides.Models.Presentation.findAll({name: user.session}, function(saved){
 						presentation.attr("id",saved[0].id);
 					});
-				});
-				
-				
+					});
 				
 				// Interceptamos las actualizaciones de curSlide
 				$(document).on('slideenter', function(){
@@ -59,16 +55,21 @@ steal(
 				});
 
 			} else { // view
-				
+				// clase especial estilo view
+				$('body').addClass('show-notes');
+				// se eliminan los build porq los view no van por pasos
+				$('.build').removeClass('build');
+				$('.to-build').show().removeClass('to-build');
+				// se activa la sincronizacion
 				var interval = setInterval(function(){
 					Slides.Models.Presentation.findAll({name: user.session}, 
 						function(presentations){
-							console.log(presentations);
+							steal.dev.log(presentations);
 							if (presentations.length == 0) {
 								console.log("no presentation found");
 								clearInterval(interval);
 							} else {
-								console.log("updated presentation " + presentations[0].name);
+								steal.dev.log("updated presentation " + presentations[0].name);
 								internalCurrentSlide(presentations[0].currentSlide);
 							}
 						});
@@ -77,7 +78,9 @@ steal(
 			}
 			
 		});
-		$(configDialogSelector).dialog({modal:true});
+		
+		// Activar el panel de configuracion
+		//$(configDialogSelector).dialog({modal:true});
 		
 		
 		

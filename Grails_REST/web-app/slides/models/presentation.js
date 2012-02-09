@@ -9,11 +9,11 @@ steal('jquery/model', function() {
 	$.Model('Slides.Models.Presentation',
 	/* @Static */
 	{
-		findAll : "../presentations",
-		findOne : "../presentations/{id}",
-		create : "../presentations",
-		update : "../presentations/{id}",
-		destroy : "../presentations/{id}",
+		findAll : "http://ifgup.cloudfoundry.com/presentations",
+		findOne : "http://ifgup.cloudfoundry.com/presentations/{id}",
+		create : "http://ifgup.cloudfoundry.com/presentations",
+		update : "http://ifgup.cloudfoundry.com/presentations/{id}",
+		destroy : "http://ifgup.cloudfoundry.com/presentations/{id}",
 		poll : function(startIndex, success, error) {
 			// similar to findAll but polls the server and returns array of 'MyApp.Models.Notification objects
 		}
