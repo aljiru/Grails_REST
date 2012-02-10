@@ -14,13 +14,16 @@ steal('jquery/model', function() {
 		create : "http://ifgup.cloudfoundry.com/presentations",
 		update : "http://ifgup.cloudfoundry.com/presentations/{id}",
 		destroy : "http://ifgup.cloudfoundry.com/presentations/{id}",
-		poll : function(startIndex, success, error) {
-			// similar to findAll but polls the server and returns array of 'MyApp.Models.Notification objects
-		}
 	},
 	/* @Prototype */
 	{
 		// id, currentSlide, dateCreated, lastUpdated, version
+		serialize : function() {
+			var data = this._super();
+			delete data.dateCreated;
+			delete data.lastUpdated;
+			return data;
+		}
 	});
 
 })
