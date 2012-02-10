@@ -5,6 +5,7 @@
 <title>Presentation Javascript MVC</title>
 
 <meta charset='utf-8'>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script src='../slides.js'></script>
 </head>
 
@@ -12,69 +13,76 @@
 
 	<section id='slides' class='slides layout-regular template-inftel'>
 
-		<article data-xref='a[name="h.qozgn9l1wzi5"]'>
-			<h3>Sistema de gestión de paquetes</h3>
-			<p>En la década de los 90 Roy T. Fielding realizó un estudio en
-				el que buscaba el estilo arquitectónico que más propiedades aportara
-				a sistemas en Red basados en Hypermedia.</p>
-			<p>El estilo más prometedor fue
-				Layered-Code-on-Demand-Client-Cache-Stateless-Server (LCODC$SS).</p>
-			<p>
-				<img src="images/roy.jpg" />
+		<article data-xref='a[name="h.tcb3v3svwd1g"]'>
+			<h3>Introducción a REST</h3>
+			<ul>
+				<li>En la década de los 90 Roy T. Fielding realizó un estudio
+					en el que buscaba el estilo arquitectónico que más propiedades
+					aportara a sistemas en Red basados en Hypermedia.</li>
+				<li>El estilo más prometedor fue
+					Layered-Code-on-Demand-Client-Cache-Stateless-Server (LCODC$SS).</li>
+			</ul>
+			<p style="width: 80%; margin: auto; margin-top: 20px;">
+				<img src="images/estilos.png" />
 			</p>
 		</article>
 
-		<article data-xref='a[name="h.tcb3v3svwd1g"]'>
-			<h3>Dependencias de los paquetes</h3>
-			<p>
-				Cada paquete contiene una lista de <b>dependencias</b> y una lista
-				de <b>sugerencias</b>
-			</p>
-			<p>
-				<img style='width: 95%' src='./images/paquetes.svg'>
+		<article data-xref='a[name="h.nfyixxkiaoyp"]'>
+			<h3>REST: LCODC$SS + Interfaz Uniforme</h3>
+			<ul>
+				<li>REST surge como fruto de este estudio.</li>
+				<li>Se basa en el estilo arquitectónico LCODC$SS + el uso de
+					una Interfaz Uniforme para la comunicación entre componentes.</li>
+			</ul>
+			<p style="width: 60%; margin: auto; margin-top: 20px;">
+				<img src="images/REST-style.PNG" />
 			</p>
 		</article>
 
 		<article data-xref='a[name="h.yx22ozb8qvzw"]'>
-			<h3>dpkg-query</h3>
-			<p>
-				Es una de las muchas herramientas de gestión de paquetes que se
-				pueden encontrar en linux<br> <br> Sirve para consultar la
-				base de datos de paquetes<br>
-			<pre>
-~$ dpkg-query -l zlib1
-Desired=Unknown/Install/Remove/Purge/Hold
-| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
-|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
-||/ Name                          Version                       Description
-+++-=============================-=============================-==========================================================================
-un  zlib1                         <none>                        (no description available)
-			
-			
-			
-			
-			
-			</pre>
-			</p>
-			<div class="build">
-				<div class="yellow-background">Permite consultar las
-					dependencias y sugerencias</div>
-			</div>
+			<h3>RESTful HTTP</h3>
+			<p>RESTful: Implementación que cumple con el estilo REST.</p>
+			<p>La implementación más conocida y exitosa es RESTful HTTP.</p>
+			<p>Modela el concepto de Interfaz Uniforme usando el patrón Verbo
+				+ Sustantivo:</p>
+			<ul>
+				<li><b>Verbos:</b> Definidos por el protocolo HTTP. Son las
+					acciones: GET, POST, PUT, DELETE, HEAD, OPTIONS.</li>
+				<li><b>Sustantivos:</b> Son definidos por el protocolo URI.
+					Identifican de forma inequívoca a recursos dentro de la Web.</li>
+			</ul>
+
 		</article>
 
 		<article data-xref='a[name="h.i1gdrwqnbzuo"]'>
-			<h3>Dependencias de los paquetes</h3>
-			<p>
-				Cada paquete contiene una lista de <b>dependencias</b> y una lista
-				de <b>sugerencias</b>
-			</p>
-			<p>
-				<img style='width: 95%' src='./images/paquetes.svg'>
-			</p>
+			<h3>Introducción a Servicios REST</h3>
+			<p>Historicamente lo comunicación remota entre componentes ha
+				sido un problema para la programación distribuida. Distintas
+				soluciones:</p>
+			<ul>
+				<li><b>Basadas en RPC:</b> Son muy complejas. CORBA, RMI, etc.</li>
+				<li><b>Basadas en MOM:</b> Muy interesantes para comunicaciones
+					asíncronas. Tuvieron su auge con el estándar JMS.</li>
+				<li><b>Web Services:</b> Basado en protocolos SOAP, WSDL, UDDI.
+					Tienen su auge gracias a SOA. Demasiada Complejidad.</li>
+			</ul>
 		</article>
 
 		<article data-xref='a[name="h.e0bxyp5jtxo6"]'>
-			<h3>Dependencias de los paquetes</h3>
+			<h3>Servicios REST en la Web Moderna</h3>
+			<p>La Web Moderna es Social: Los contenidos los crean y poseen
+				usuarios no Administradores.</p>
+			<p>Cientos de Aplicaciones se comunican entre ellas para
+				compartir información del usuario.</p>
+			<p>REST predomina en este ámbito. Características avanzadas:</p>
+			<ul>
+				<li>Seguridad mediante OAuth.</li>
+				<li>Interfaz definidad por estándar WADL o WSDL.</li>
+			</ul>
+		</article>
+
+		<article data-xref='a[name="h.e11ruy8qi0ff"]'>
+			<h3>REST en la Práctica</h3>
 			<p>
 				Cada paquete contiene una lista de <b>dependencias</b> y una lista
 				de <b>sugerencias</b>
