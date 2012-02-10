@@ -16,16 +16,14 @@ steal(
 	function(){					// configure your application
 		
 		// Se encarga de comunicarse con slides.js (libreria google)
+		var lastSlide = -1; // para q solo se cambie cuando camba server
 		var internalCurrentSlide = function(number) {
 			// esto debe buscar o modificar el numero de slide actual
 			if (typeof number == "undefined" ) {
 				return curSlide;
 			} else {
 				console.log("movido a diapositiva " + number);
-				if (curSlide != number) {
-					setCurSlide(number);
-					$('#side-notes').scrollTo($('article.current').data('xref'),500);
-				}
+				if (lastSlide != number) { lastSlide = number; setCurSlide(number); }
 			}
 		}
 		
@@ -95,6 +93,10 @@ steal(
 				$('button').hide();
 				// se calcula el zoom
 				$(window).resize(function(){calculateZoom()});calculateZoom();
+				// Sincroniza el documento y slides
+				$(document).on('slideenter', function(){
+					$('#side-notes').scrollTo($('article.current').data('xref'),500);
+				});
 				
 				// se activa la sincronizacion
 				var interval = setInterval(function(){
