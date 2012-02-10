@@ -1,0 +1,91 @@
+/******* MENU *******/  
+#container{  
+    margin:4em auto;  
+    width:400px;  
+}  
+#container ul{  
+    list-style:none;  
+    list-style-position:outside;  
+}  
+#container ul.menu li{  
+    float:left;  
+    margin-right:8px;  
+    margin-bottom:-1px;  
+}  
+#container ul.menu li{  
+    font-weight:700;  
+    display:block;  
+    padding:10px 15px;  
+    background:#303030;  
+    margin-bottom:-1px;  
+    border:1px solid #3e3e3e;  
+    border-width:1px 1px 1px 1px;  
+    position:relative;  
+    color:#e4e1cd;  
+    cursor:pointer;  
+    -moz-border-radius:3px 3px 0 0;  
+    -webkit-border-radius:3px 3px 0 0;  
+}  
+#container ul.menu li:hover{  
+    color:#fff;  
+}  
+#container ul.menu li.active{  
+    background:#171717;  
+    top:1px;  
+    border-bottom:0;  
+    color:#fff;  
+}  
+/******* /MENU *******/  
+  
+/******* CONTENT *******/  
+.content{  
+    margin:0pt auto;  
+    background:#efefef;  
+    background:#171717;  
+    border:1px solid #3e3e3e;  
+    text-align:left;  
+    padding:1.3em;  
+    padding-bottom:20px;  
+    font-size:12px;  
+    line-height:2em;  
+    color:#8C8C8C;  
+    -moz-border-radius:5px 5px 5px 5px;  
+    -webkit-border-radius:5px 5px 5px 5px;  
+}  
+.content h3{  
+    line-height:1em;  
+    vertical-align:middle;     
+    font-size:16px;  
+    color:#E4E1CD;  
+}  
+/******* /CONTENT *******/  
+  
+/******* autores *******/   
+.content.autores{  
+    display:block;  
+}  
+/******* /autores *******/  
+  
+/******* modulos *******/   
+.content.modulos{  
+    display:none;  
+}  
+/******* /modulos *******/  
+  
+/******* ENLACES *******/   
+.content.enlaces{  
+    display:none;  
+}  
+.content.enlaces a{  
+    color:#498BBF;  
+}  
+/******* /ENLACES *******/  
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}

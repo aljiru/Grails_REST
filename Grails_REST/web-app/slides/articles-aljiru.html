@@ -22,9 +22,10 @@
 			<p style="margin-top: 20px; margin-left: 10px; float: left;">
 				<img src="images/estilos.png" />
 			</p>
-			<p style="margin-left: 10px; float: right; width: 300px;">El
-				estilo más prometedor fue
-				Layered-Code-on-Demand-Client-Cache-Stateless-Server (<b>LCODC$SS</b>)</p>
+			<p style="margin-left: 10px; float: right; width: 300px;">
+				El estilo más prometedor fue
+				Layered-Code-on-Demand-Client-Cache-Stateless-Server (<b>LCODC$SS</b>)
+			</p>
 		</article>
 
 		<article data-xref='a[name="id.fe4q0ai4nj0z"]'>
@@ -41,7 +42,9 @@
 
 		<article data-xref='a[name="h.yx22ozb8qvzw"]'>
 			<h3>RESTful HTTP</h3>
-			<p><b>RESTful:</b> Implementación que cumple con el estilo REST.</p>
+			<p>
+				<b>RESTful:</b> Implementación que cumple con el estilo REST.
+			</p>
 			<p>La implementación más conocida y exitosa es RESTful HTTP.</p>
 			<p>Modela el concepto de Interfaz Uniforme usando el patrón Verbo
 				+ Sustantivo:</p>
@@ -88,15 +91,152 @@
 			<p>
 				<b>Servidor en REST (basado en GRAILS).</b>
 			</p>
-			<p style="width: 60%; margin: auto; margin-top: 20px;">
-				<img src="images/grails-mapping.png" />
-			</p>
-			<p style="width: 60%; margin: auto; margin-top: 20px;">
-				<img src="images/grails-controller.png" />
-			</p>
+			<pre class="prettyprint">
+"/presentations"(controller: "presentationRest") {
+   action = [ GET: "findAll", POST: "create" ]
+}
+
+"/presentations/$id"(controller: "presentationRest") {
+   action = [ GET: "findOne", PUT: "update", DELETE: "destroy" ]
+}	
+			</pre>
 			<p>
 				<b>Cliente en REST (basado en JMVC).</b>
 			</p>
+		</article>
+
+		<article data-xref='a[name="h.sh1ru8zd93r1"]'>
+			<h3>Closure</h3>
+			<pre class="prettyprint">
+function crearFuncion(){
+  var i=0;
+  var sumar = function(){
+    i=i+1;
+    return i;
+  };
+  return sumar;
+}
+</pre>
+			<pre class="prettyprint">
+var fsumar = crearFuncion();
+alert(fsumar());
+alert(fsumar());
+alert(fsumar());
+</pre>
+			<ul>
+				<li>Devolución de un objeto interno</li>
+				<li>Referencia a una variable externa a la función</li>
+			</ul>
+		</article>
+
+		<article data-xref='a[name="h.949dfmw7gi6q"]'>
+			<h3>Evento on/delegate</h3>
+			<pre class="prettyprint">
+$("body").on("click","p", function(){
+  $(this).after("<p>Another paragraph!</p>");
+});
+</pre>
+			<ul>
+				<li>No tenemos que asociar directamente al elemento del DOM el
+					manejador de eventos</li>
+				<li>Se instancia el manejador de eventos a todos los elementos
+					actuales y los que se añadan dinámicamente</li>
+				<li>delegate está deprecated</li>
+			</ul>
+		</article>
+
+		<article data-xref='a[name="h.949dfmw7gi6q"]'>
+			<iframe style="height:200px" src="delegate.html"> </iframe>
+		</article>
+
+		<article data-xref='a[name="h.ps3c5qod08us"]'>
+			<h3>Evento trigger</h3>
+			<pre class="prettyprint">
+$("button:first").click(function () {
+  update($("span:first"));
+});
+
+$("button:last").click(function () {
+  $("button:first").trigger('click');
+  update($("span:last"));
+});
+
+function update(j) {
+  var n = parseInt(j.text(), 10);
+  j.text(n + 1);
+}
+</pre>
+			<ul>
+				<li>Posibilidad de lanzar eventos que están vinculados a otros
+					elementos del DOM</li>
+			</ul>
+		</article>
+
+
+		<article data-xref='a[name="h.ps3c5qod08us"]'>
+			<iframe style="height:200px" src="trigger.html"> </iframe>
+		</article>
+
+		<article data-xref='a[name="h.qlcnie5ihkd"]'>
+			<h3>Evento live</h3>
+			<pre class="prettyprint">
+$(document).ready(function(){
+  $(".verde").live("click", function(e){
+    var elem = $(this);
+	if (elem.html()!="Hiciste clic!!"){
+	  elem.html("Hiciste clic!!");
+	}else{
+	  elem.html("Hiciste de nuevo clic!!");
+	}
+  })
+   
+  $("#insertarelem").click(function(e){
+    var nuevoElemento = $('<div class="verde">
+      Elemento creado dinamicamente</div>');
+    nuevoElemento.appendTo($(document.body));
+  });
+   
+  $("#ponerclaseverde").click(function(e){
+    $("#noverde").addClass("verde");
+  });
+})
+</pre>
+			<ul>
+				<li>Funciona de la misma forma que on y delegate</li>
+				<li>Reordenación de los elementos para la llamada</li>
+				<li>Deprecated</li>
+			</ul>
+		</article>
+
+		<article data-xref='a[name="h.qlcnie5ihkd"]'>
+			<iframe style="height:200px" src="live.html"> </iframe>
+		</article>
+
+		<article data-xref='a[name="h.gyswn1z2v90"]'>
+			<h3>Plugins</h3>
+			<pre class="prettyprint">
+jQuery.tabber = function( mensaje ){
+  $(mensaje).click(function(e){
+    var a = e.target.id;
+    //desactivamos seccion y activamos elemento de menu  
+    $(".menu li.active").removeClass("active");  
+    $(".menu #"+a).addClass("active");  
+    //ocultamos divisiones, mostramos la seleccionada  
+    $(".content").css("display", "none");  
+    $("."+a).fadeIn(); 
+  });
+}
+</pre>
+			<ul>
+				<li>Método creado para extender la funcionalidad básica del
+					objeto jQuery</li>
+				<li>Posibilidad de reutilizar métodos creados por nosotros y
+					propios del objeto jQuery</li>
+			</ul>
+		</article>
+
+		<article data-xref='a[name="h.gyswn1z2v90"]'>
+			<iframe style="height:200px" src="tabs.html"> </iframe>
 		</article>
 
 	</section>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es-ES">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Cómo crear un menú de pestañas elegante en jQuery</title>
+        <link rel="stylesheet" href="EstilosTabs.css" type="text/css" media="screen" />
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript" src="plugins/tabs.js"></script>
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <h1>Cómo crear un menú de pestañas elegante en jQuery</h1>
+            <br />
+            <div class="aux">
+                <div id="container">
+                    <ul class="menu">
+                        <li id="autores" class="active">Autores</li>
+                        <li id="modulos">Modulos</li>
+                        <li id="enlaces">Enlaces</li>
+                    </ul>
+                    <span class="clear"></span>
+                    <div class="content autores">
+                        <h3></h3>
+                        <ul>
+                            <li> Alberto Jiménez Ruiz </li>
+                            <li> Agustín Jiménez Fernández</li>
+                            <li> Ignacio Baca Moreno </li>
+                        </ul>
+                    </div>
+                    <div class="content modulos">
+                        <h3></h3>
+                        <ul>
+                            <li> HTML </li>
+                            <li> UNIX </li>
+                            <li> BD </li>
+                            <li> MP </li>
+                            <li> Java </li>
+                        </ul>
+                    </div>
+                    <div class="content enlaces">
+                        <h3>Deberías Visitar...</h3>
+                        <ul>
+                            <li> <a href="http://plugins.jquery.com/">plugins.jquery.com/</a></li>
+                            <li> <a href="http://www.jqueryplugins.com/">www.jqueryplugins.com/</a></li>
+                            <li> <a href="http://docs.jquery.com/Tutorials">docs.jquery.com/Tutorials</a></li>
+                            <li> <a href="http://docs.jquery.com/Plugins/Authoring">http://docs.jquery.com/Plugins/Authoring</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $.tabber(".menu li");
+        </script>
+    </body>
+</html>
