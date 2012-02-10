@@ -16,7 +16,6 @@ $.Controller('Slides.User.Create',
 {
 	init : function(){
 		this.element.html(this.view());
-		this.element.dialog({modal:true});
 	},
 	submit : function(el, ev){
 		ev.preventDefault();
@@ -26,6 +25,11 @@ $.Controller('Slides.User.Create',
 		$([Slides.Models.User]).trigger("sync",user);
 		this.element.find('[type=submit]').val('Sincronizar');
 	},
+	click : function(el, ev){
+		var form = this.element.find('form');
+		this.element.dialog({modal:true, height: 262, width: 276, resizable: false,
+			buttons: { "Sincronizar": function(){form.submit()} } } );
+	}
 })
 
 });

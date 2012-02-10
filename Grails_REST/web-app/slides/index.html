@@ -1,52 +1,28 @@
 <!DOCTYPE html>
 
-<!--
-  Google HTML5 slide template
-
-  Authors: Luke Mahé (code)
-           Marcin Wichary (code and design)
-           
-           Dominic Mazzoni (browser compatibility)
-           Charles Chen (ChromeVox support)
-
-  URL: http://code.google.com/p/html5slides/
--->
-
 <html>
   <head>
-    <title>Presentation</title>
+    <title>Presentation Javascript MVC</title>
 
     <meta charset='utf-8'>
     <script src='../slides.js'></script>
   </head>
   
-  <style>
-   .slides.template-inftel > article:not(.nobackground):not(.biglogo) {
-  		background: url(./images/inftel-logo.png) 560px 605px no-repeat;
-    	background-color: white;  
-	} 
-    
-    
-  </style>
-
   <body style='display: none'>
 
     <section id='slides' class='slides layout-regular template-inftel'>
       
-      <!-- Your slides (<article>s) go here. Delete or comment out the
-           slides below. -->
-        
-        
-      
       <article data-xref='0'>
-      	<h1>Paquetes más recomendados<br>
+      	<h1>JavascriptMVC<br>
         <span style="font-size:50%">
-        UNIX y su uso en Empresas de Comunicaciones Móviles
+        Librería jQuery y servicios REST
         </span>
         </h1>
         <p>
+        Alberto Jimenez Ruiz<br>
+        Agustin Jimenez Fernandez<br>
         Ignacio Baca Moreno-Torres<br>
-        Noviembre 2011
+        Febrero 2012
         </p>
       </article>
       
@@ -378,6 +354,9 @@ $ dpkg-counter all | awk '{print $2,$1}' | sort -nr | head
     
     <div id="config-dialog" title="Configurar" style="display: none"></div>
     <div id="side-notes" title="Notas" style="display: none"></div>
+    <button id="config-button">Configurar</button>
+    <button id="left-button">Anterior</button>
+    <button id="right-button">Siguiente</button>
     
     <script type='text/javascript' src='../steal/steal.js?slides'></script>
 

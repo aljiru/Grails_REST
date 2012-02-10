@@ -29,6 +29,17 @@ steal(
 			}
 		}
 		
+		// Se calcula el tamaño de diapositivas
+		var calculateZoom = function() {
+			var width = $(window).width();
+			width = width * 0.053;
+			width = Math.floor(width, 50);
+			width = Math.ceil(width, 100);
+			console.log('calculate zoom width:' + $(window).width() + ', %:'+width);
+			
+			$('section.slides').css('zoom',width+"%");
+		}
+		
 		//$('#presentations').slides_presentation_list();
 		//$('#create-presentation').slides_presentation_create();
 	    //$('#users').slides_user_list();
@@ -36,6 +47,15 @@ steal(
 		
 		var configDialogSelector = '#config-dialog';
 		$(configDialogSelector).slides_user_create();
+		
+		// Configura boton, delega click al usercer_create_controler y oculta
+		$('#config-button').button({icons:{primary:"ui-icon-config"},text:false})
+		                   .click(function(){$(configDialogSelector).click() });
+		
+		$('#left-button').button({icons:{primary:"ui-icon-left"},text:false})
+		                   .click(function(){$(prevSlide())});                   	             
+		$('#right-button').button({icons:{primary:"ui-icon-right"},text:false})
+		                   .click(function(){$(nextSlide())});                   	             
 		
 		// Listen to user updates
 		Slides.Models.User.bind('sync', function(ev, user){
@@ -71,6 +91,11 @@ steal(
 					});
 					
 				});
+				// se ocultan los botones
+				$('button').hide();
+				// se calcula el zoom
+				$(window).resize(function(){calculateZoom()});calculateZoom();
+				
 				// se activa la sincronizacion
 				var interval = setInterval(function(){
 					Slides.Models.Presentation.findAll({name: user.session}, 
