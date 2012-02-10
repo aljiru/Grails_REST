@@ -31,14 +31,14 @@
 
   <body style='display: none'>
 
-    <section class='slides layout-regular template-inftel'>
+    <section id='slides' class='slides layout-regular template-inftel'>
       
       <!-- Your slides (<article>s) go here. Delete or comment out the
            slides below. -->
         
         
       
-      <article>
+      <article data-xref='0'>
       	<h1>Paquetes más recomendados<br>
         <span style="font-size:50%">
         UNIX y su uso en Empresas de Comunicaciones Móviles
@@ -50,7 +50,7 @@
         </p>
       </article>
       
-      <article class='fill'>
+      <article class='fill' data-xref='0'>
         <h3>
           Conocimientos previos
         </h3>
@@ -59,7 +59,7 @@
         </p>
       </article>
       
-      <article>
+      <article data-xref='a[name="h.qozgn9l1wzi5"]'>
         <h3>Sistema de gestión de paquetes</h3>
         <p>
           <b>Gestor de paquetes</b> es un conjunto de herramientas para
@@ -79,7 +79,7 @@
         </ul>
       </article>    
       
-      <article>
+      <article data-xref='a[name="h.tcb3v3svwd1g"]'>
         <h3>Dependencias de los paquetes</h3>
         <p>
           Cada paquete contiene una lista de <b>dependencias</b> 
@@ -90,7 +90,7 @@
         </p>
       </article> 
       
-      <article>
+      <article data-xref='a[name="h.yx22ozb8qvzw"]'>
         <h3>dpkg-query</h3>
         <p>
           Es una de las muchas herramientas de gestión de paquetes
@@ -377,6 +377,7 @@ $ dpkg-counter all | awk '{print $2,$1}' | sort -nr | head
     </section>
     
     <div id="config-dialog" title="Configurar" style="display: none"></div>
+    <div id="side-notes" title="Notas" style="display: none"></div>
     
     <script type='text/javascript' src='../steal/steal.js?slides'></script>
 

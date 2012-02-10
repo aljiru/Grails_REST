@@ -1,5 +1,5 @@
 steal(
-	'./slides.css', 			// application CSS file
+	'steal/less',
 	'./models/models.js',		// steals all your models
 	//'./fixtures/fixtures.js',	// sets up fixtures for your models
 	'slides/presentation/create',
@@ -8,9 +8,11 @@ steal(
 	'slides/user/list'
 	//'./plugins/jquery-1.7.1.min.js'
 	).then(
+	'./slides.less', 			// application CSS file
 	'./css/smoothness/jquery-ui-1.8.17.custom.css',
 	'./plugins/jquery-ui-1.8.17.custom.min.js',
 	'./plugins/jquery.periodicalupdater.js',
+	'./plugins/jquery.scrollTo.js',
 	function(){					// configure your application
 		
 		// Se encarga de comunicarse con slides.js (libreria google)
@@ -22,6 +24,7 @@ steal(
 				console.log("movido a diapositiva " + number);
 				if (curSlide != number) {
 					setCurSlide(number);
+					$('#side-notes').scrollTo($('article.current').data('xref'),500);
 				}
 			}
 		}
@@ -60,6 +63,14 @@ steal(
 				// se eliminan los build porq los view no van por pasos
 				$('.build').removeClass('build');
 				$('.to-build').show().removeClass('to-build');
+				$('#side-notes').load('https://docs.google.com/document/pub?id=1eX6pn1gBDpvYuNTNNVijoUMileOJhikopy9edf3ToHU', function(){
+					$(this).fadeIn().find('img').each(function(){
+						$(this).attr('src','https://docs.google.com/document/'+$(this).attr('src'));
+						$(this).attr('height','');
+						$(this).attr('width','');
+					});
+					
+				});
 				// se activa la sincronizacion
 				var interval = setInterval(function(){
 					Slides.Models.Presentation.findAll({name: user.session}, 
