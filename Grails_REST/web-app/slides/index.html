@@ -1,364 +1,467 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>Presentation Javascript MVC</title>
+<head>
+<title>Presentation Javascript MVC</title>
+<meta charset='utf-8'>
+<script src='../slides.js'></script>
+</head>
 
-    <meta charset='utf-8'>
-    <script src='../slides.js'></script>
-  </head>
-  
-  <body style='display: none'>
+<body style='display: none'>
 
-    <section id='slides' class='slides layout-regular template-inftel'>
+<section id='slides' class='slides layout-regular template-inftel'>
       
-      <article data-xref='0'>
-      	<h1>JavascriptMVC<br>
-        <span style="font-size:50%">
-        Librería jQuery y servicios REST
-        </span>
-        </h1>
-        <p>
-        Alberto Jimenez Ruiz<br>
-        Agustin Jimenez Fernandez<br>
-        Ignacio Baca Moreno-Torres<br>
-        Febrero 2012
-        </p>
-      </article>
+<article data-xref='0'>
+<h1>JavascriptMVC<br>
+<span style="font-size:50%">
+Librería jQuery y servicios REST
+</span>
+</h1>
+<p>
+Alberto Jimenez Ruiz<br>
+Agustin Jimenez Fernandez<br>
+Ignacio Baca Moreno-Torres<br>
+Febrero 2012
+</p>
+</article>
       
-      <article class='fill' data-xref='0'>
-        <h3>
-          Conocimientos previos
-        </h3>
-        <p>
-          <img src='./images/objetivos.jpg'>
-        </p>
-      </article>
-      
-      <article data-xref='a[name="h.qozgn9l1wzi5"]'>
-        <h3>Sistema de gestión de paquetes</h3>
-        <p>
-          <b>Gestor de paquetes</b> es un conjunto de herramientas para
-          automatizar el proceso de 
-          instalación, actualización, configuración y eliminación
-          de software.<br>
-          En estos sistemas el software se distribuye en forma de
-          paquetes.
-        </p>
-        <ul class="build">
-          <li>
-            Un <b>paquete</b>, frecuentemente encapsulado en un solo
-            fichero, 
-            incluye tanto el software como otra información que es usada
-            por el gestor de paquetes.
-          </li>
-        </ul>
-      </article>    
-      
-      <article data-xref='a[name="h.tcb3v3svwd1g"]'>
-        <h3>Dependencias de los paquetes</h3>
-        <p>
-          Cada paquete contiene una lista de <b>dependencias</b> 
-          y una lista de <b>sugerencias</b>
-        </p>
-        <p>
-          <img style='width: 95%' src='./images/paquetes.svg'>
-        </p>
-      </article> 
-      
-      <article data-xref='a[name="h.yx22ozb8qvzw"]'>
-        <h3>dpkg-query</h3>
-        <p>
-          Es una de las muchas herramientas de gestión de paquetes
-          que se pueden encontrar en linux<br><br>
-          Sirve para consultar la base de datos de paquetes<br>
-<pre>
-~$ dpkg-query -l zlib1
-Desired=Unknown/Install/Remove/Purge/Hold
-| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
-|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
-||/ Name                          Version                       Description
-+++-=============================-=============================-==========================================================================
-un  zlib1                         <none>                        (no description available)</pre>
-        </p>
-        <div class="build">
-          <div class="yellow-background">
-          	Permite consultar las dependencias y sugerencias
-          </div>
-        </div>
-      </article> 
-      
-      <article class='fill'>
-        <h3>
-          El problema y la solución
-        </h3>
-        <p>
-          <img src='./images/problema.jpg'>
-        </p>
-      </article>   
-      
-       <article>
-        <h3>¿Que hace la aplicación?</h3>
-        <ul class="build">
-          <li>
-            Debe permitir elegir al usuario entre tres acciones<br>
-            <code>depends, recomends, all</code>
-          </li>
-          <li>
-            <code>depends</code> debe devolver una lista de paquetes
-            seguido del número de paquetes que dependen de él
-          </li>
-          <li>
-            <code>recomends</code> debe devolver una lista de paquetes
-            seguido del número de paquetes que lo recomiendan
-          </li>
-          <li>
-            <code>all</code> debe devolver una lista de paquetes
-            seguido de la suma de los resultados anteriores
-          </li>
-        </ul>
-      </article>  
+<article class='fill' data-xref='0'>
+<h3>Introducción</h3>
+<p><img src='./images/objetivos.jpg'></p>
+</article>
 
-       <article>
-        <h3>Calculo de <code>depends</code></h3>
-        <p>
-          <code>dpkg-query --show -f='${Package}, ${Depends}\n'</code><br>
-          Permite obtener una lista de paquetes y sus dependencias
-          <pre>
-dpkg-query --show -f='${Package}, ${Depends}\n'
-acroread-common, debconf (>= 0.5) | debconf-2.0
-acl, libacl1 (>= 2.2.51-3), libc6 (>= 2.4)
-acpi-support, x11-xserver-utils, acpid (>= 1.0.4-1ubuntu4), hdparm, lsb-base (>= 1.3-9ubuntu3), powermgmt-base, laptop-detect, dmidecode (>= 2.7-1), libc6 (>= 2.4), pm-utils
+<!-------------------------------------------------------------------.. REST -->
+<article class='fill'>
+<h3>Representational State Transfer</h3>
+<p><img src='./images/problema.jpg'></p>
+</article>   
+
+<article data-xref='a[name="h.tcb3v3svwd1g"]'>
+<h3>Introducción a REST</h3>
+<ul>
+<li>En la década de los 90 Roy T. Fielding realizó un estudio
+en el que buscaba el estilo arquitectónico que más propiedades
+aportara a sistemas en Red basados en Hypermedia.</li>
+</ul>
+<p style="margin-top: 20px; margin-left: 10px; float: left;">
+<img src="images/estilos.png" />
+</p>
+<p style="margin-left: 10px; float: right; width: 300px;">
+El estilo más prometedor fue
+Layered-Code-on-Demand-Client-Cache-Stateless-Server (<b>LCODC$SS</b>)
+</p>
+</article>
+
+<article data-xref='a[name="id.fe4q0ai4nj0z"]'>
+<h3>Introducción a REST</h3>
+<ul>
+<li>REST surge como fruto de este estudio.</li>
+<li>Se basa en el estilo arquitectónico LCODC$SS + el uso de
+una Interfaz Uniforme para la comunicación entre componentes.</li>
+</ul>
+<p style="width: 80%; margin: auto; margin-top: 20px;">
+<img src="images/esquema-rest.png" />
+</p>
+</article>
+
+<article data-xref='a[name="h.yx22ozb8qvzw"]'>
+<h3>RESTful HTTP</h3>
+<p><b>RESTful:</b> Implementación que cumple con el estilo REST.</p>
+<p>La implementación más conocida y exitosa es RESTful HTTP.</p>
+<p>Modela el concepto de Interfaz Uniforme usando el patrón Verbo
++ Sustantivo:</p>
+<ul>
+<li><b>Verbos:</b> Definidos por el protocolo HTTP. Son las
+acciones: GET, POST, PUT, DELETE, HEAD, OPTIONS.</li>
+<li><b>Sustantivos:</b> Son definidos por el protocolo URI.
+Identifican de forma inequívoca a recursos dentro de la Web.</li>
+</ul>
+</article>
+
+<article data-xref='a[name="h.i1gdrwqnbzuo"]'>
+<h3>Introducción a Servicios REST</h3>
+<p>Historicamente lo comunicación remota entre componentes ha
+sido un problema para la programación distribuida. Distintas
+soluciones:</p>
+<ul>
+<li><b>Basadas en RPC:</b> Son muy complejas. CORBA, RMI, etc.</li>
+<li><b>Basadas en MOM:</b> Muy interesantes para comunicaciones
+asíncronas. Tuvieron su auge con el estándar JMS.</li>
+<li><b>Web Services:</b> Basado en protocolos SOAP, WSDL, UDDI.
+Demasiada Complejidad.</li>
+</ul>
+<p>Los servicios REST surgen para realizar computación
+distribuída en la Web aprovechando la simpleza de REST.</p>
+</article>
+
+<article data-xref='a[name="h.e0bxyp5jtxo6"]'>
+<h3>Servicios REST en la Web Moderna</h3>
+<p>La Web Moderna es Social: Los contenidos los crean y poseen
+usuarios no Administradores</p>
+<p>Cientos de Aplicaciones se comunican entre ellas para
+compartir información del usuario</p>
+<p>REST predomina en este ámbito. Características avanzadas</p>
+<ul>
+<li>Seguridad mediante <b>OAuth</b></li>
+<li>Interfaz definidad por estándar <b>WADL</b> o <b>WSDL</b></li>
+</ul>
+</article>
+
+<article data-xref='a[name="h.8c8nzzv4ujn"]'>
+<h3>REST en la Práctica</h3>
+<p><b>Servidor en REST (basado en GRAILS)</b></p>
+<pre style='margin-top:14px'>
+"/presentations"(controller: "presentationRest") {
+  action = [ GET: "findAll", POST: "create" ]
+}
+
+"/presentations/$id"(controller: "presentationRest") {
+  action = [ GET: "findOne", PUT: "update", DELETE: "destroy" ]
+} 
 </pre>
-        </p>
-      </article>  
-
-       <article>
-        <h3>Problemas o dificultades encontradas</h3>
-        <ul>
-          <li>El formato de las lineas debe ser simplificado
-<pre>
-acroread-common, debconf (>= 0.5) | debconf-2.0
-acl, libacl1 (>= 2.2.51-3), libc6 (>= 2.4)
-</pre>
-<pre>
-acroread-common,debconf|debconf-2.0
-acl,libacl1,libc6
-</pre>
-		  </li>
-          <li>Existen paquetes del que ningún otro depende</li>
-          <li>Debe reordenarse el resultado final</li>
-        </ul>
-      </article>
-
-       <article>
-        <h3>Contador a través de AWK</h3>
-        <p>Se debe procesar el resultado obtenido de la consulta <code>dpkg-query</code>
-          y contabilizar el número de veces que aparece cada paquete<br>
-          <pre>dpkg-query --show -f='${Package}, ${Depends}\n' | awk -F '[,|]+'</pre>
-        </p>
-        <div class="build">
-          <pre>
-# Se filtra para eliminar espacios, comas y versiones
-{ gsub(/(([ ]+)|([, ]*$)|(\([^\)]+)))*/,"",$0); }
-# Los paquetes sin sugerencias tambien se añaden
-{ if (!($1 in totals)) totals[$1]=0 }
-# Para cada sugerencia, se suma al total
-NF > 1 { for(i=2;i<=NF;i++) totals[$i]++; }
-# Al finalizar, se muestran los totales ordenados
-END{for(package in totals) print package,totals[package]|"sort";}
-</pre>
-        </div>
-      </article>  
-            
-      <article>
-      	<h3>Calculo de <code>recomends</code></h3>
-        <p>
-          Para calcular los paquetes que lo recomiendan se hace 
-          de forma similar, únicamente cambiando la llamada a <code>dpkg-query</code>
-        </p>
-        <p>
-          <pre>dpkg-query --show -f='${Package}, ${Suggests}\n'</pre>
-        </p>
-      </article>
-      
-      <article>
-      <h3>Calculo de <code>all</code></h3>
-        <p>
-          Para el calculo de <code>all</code> se acumula en la 
-          variable de <code>totals</code> tanto las dependencias 
-          como las recomendaciones
-        </p>
-		<div class="build">
-          <pre>
-BEGIN { 
-    cmd = \"$COUNTER -f '$FILTER_LIST' depends 2>/dev/null\"; 
-    while (cmd | getline depends) { 
-        split(depends,cols,\" \"); 
-        totals[cols[1]]=cols[2]; 
-    }
-    if (depends < 0) exit 1;
+<pre style='margin-top:-10px'>
+def findOne() {
+  log.info("Buscando uno: " + params)
+  Presentation p = Presentation.get(params.id)
+  render p as JSON
 }
 </pre>
-        </div>
-      </article>
-      
-      <article class='fill'>
-        <h3>Otros aspectos destacados</h3>
-        <p><img src='./images/destacado.jpg'></p>
-      </article>
-      
-      <article>
-        <h3>Configuración del shell</h3>
-        <ul>
-          <li>Se detiene el script si un subcomando devuelve error
-          <pre>set -o errexit</pre>
-          No tenemos que comprobar para cada comando si <code>$?</code> es diferente de <code>0</code>
-          </li>
-          <li>Se ignoran las mayúsculas y minúsculas
-          <pre>shopt -s nocasematch</pre>
-          Para facilitar su uso
-          </li>
-        </ul>
-      </article>  
+<p style='margin-top: -18px'>Cliente en REST (basado en JMVC)</p>
+</article>
 
-      <article>
-        <h3>Procesamiento de parámetros</h3>
-        <ul>
-          <li>Se ha usado el comando <code>getopts</code> para
-          ir obteniendo los parámetros pasados en la llamada
-          <pre>
-while getopts ":f:m:" option
-do
-  case $option in 
-  f) FILTER_LIST="${OPTARG}";;
-  m) ALL_METHOD="${OPTARG}";;
-  \?) echo "dpkg-counter: opción invalida -- '${OPTARG}'"; USAGE;;
-esac
-done</pre>
-		  Permite procesar fácil y de forma segura los argumentos
-          </li>
-        </ul>
-      </article>
+<!------------------------------------------------------------------- jQuery -->
+<article class='fill'>
+<h3>jQuery</h3>
+<p><img src='./images/destacado.jpg'></p>
+</article>
+      
+<article data-xref='a[name="h.sh1ru8zd93r1"]'>
+<h3>Closure</h3>
+<pre class="prettyprint">
+function crearFuncion(){
+  var i=0;
+  var sumar = function() { i=i+1; return i; };
+  return sumar;
+}
+</pre>
+<pre class="prettyprint">
+var fsumar = crearFuncion();
+alert(fsumar());
+alert(fsumar());
+alert(fsumar());
+</pre>
+<ul>
+<li>Devolución de un objeto interno</li>
+<li>Referencia a una variable externa a la función</li>
+</ul>
+</article>
+
+<article class='nobackground' data-xref='a[name="h.949dfmw7gi6q"]'>
+<h3>Evento on/delegate</h3>
+<pre style='margin-top:15px'>
+$("body").on("click","p", function(){
+  $(this).after("<p>Another paragraph!</p>");
+});
+</pre>
+<ul style='margin-top:-15px'>
+<li>No tenemos que asociar directamente al elemento del DOM el
+manejador de eventos</li>
+<li>Se instancia el manejador de eventos a todos los elementos
+actuales y los que se añadan dinámicamente</li>
+<li>delegate está deprecated</li>
+</ul>
+<iframe style="height:140px" src="delegate.html"> </iframe>
+</article>
+
+<article data-xref='a[name="h.ps3c5qod08us"]'>
+<h3>Evento trigger</h3>
+<pre style='margin-top:15px'>
+$("button:first").click(function () {
+  update($("span:first"));
+});
+
+$("button:last").click(function () {
+  $("button:first").trigger('click');
+  update($("span:last"));
+});
+
+function update(j) {
+  var n = parseInt(j.text(), 10);
+  j.text(n + 1);
+}
+</pre>
+<p style='margin-top:0'>
+<iframe style="height:100px;width:205px;float:left;margin-right:10px;margin-top:-15px" src="trigger.html"></iframe>
+Posibilidad de lanzar eventos que están vinculados a otros
+elementos del DOM</p>
+</article>
+
+<article data-xref='a[name="h.qlcnie5ihkd"]' class='smaller'>
+<h3>Evento live</h3>
+<pre style='margin-top:15px'>
+$(document).ready(function(){
+  $(&quot;.verde&quot;).live(&quot;click&quot;, function(e){
+    var elem = $(this);
+  if (elem.html()!=&quot;Hiciste clic!!&quot;){
+    elem.html(&quot;Hiciste clic!!&quot;);
+  }else{
+    elem.html(&quot;Hiciste de nuevo clic!!&quot;);
+  }})
+  $(&quot;#insertarelem&quot;).click(function(e){
+    var nuevoElemento = $('&lt;div class=&quot;verde&quot;&gt;Elemento creado dinamicamente&lt;/div&gt;');
+    nuevoElemento.appendTo($(document.body));
+  });
+  $(&quot;#ponerclaseverde&quot;).click(function(e){
+    $(&quot;#noverde&quot;).addClass(&quot;verde&quot;);
+  });
+})
+</pre>
+<iframe style="height:210px;width:310px;float:left;margin-right:34px;margin-top:-15px" src="live.html"> </iframe>
+<ul>
+<li>Funciona de la misma forma que on y delegate</li>
+<li>Reordenación de los elementos para la llamada</li>
+<li>Deprecated</li>
+</ul>
+
+</article>
+
+<article data-xref='a[name="h.gyswn1z2v90"]'>
+<h3>Plugins</h3>
+<pre style='margin-top:15px'>
+jQuery.tabber = function( mensaje ){
+  $(mensaje).click(function(e){
+    var a = e.target.id;
+    //desactivamos seccion y activamos elemento de menu  
+    $(".menu li.active").removeClass("active");  
+    $(".menu #"+a).addClass("active");  
+    //ocultamos divisiones, mostramos la seleccionada  
+    $(".content").css("display", "none");  
+    $("."+a).fadeIn(); 
+  });
+}
+</pre>
+<ul style='margin-top:-20px'>
+<li>Método creado para extender la funcionalidad básica del
+objeto jQuery</li>
+<li>Posibilidad de reutilizar métodos creados por nosotros y
+propios del objeto jQuery</li>
+</ul>
+</article>
+
+<article data-xref='a[name="h.gyswn1z2v90"]'>
+<h3>Cómo crear un menú de pestañas elegante en jQuery</h3>
+<iframe style='border:0;height:460px' src="tabs.html"></iframe>
+</article>
+      
+<!------------------------------------------------------------ JavascriptMVC --> 
+<article class='fill' data-xref='a[name="h.rxm87h94j4i"]'>
+<h3>JavascriptMVC</h3>
+<p><img src='./images/ejemplos.jpg'></p>
+</article>
+
+<article data-xref='a[name="h.rxm87h94j4i"]'>
+<h3>¿Que es Javascript MVC?</h3>
+<q style='font-size: 35px;line-height: 50px;margin-top: 48px;'>
+JavaScriptMVC is an open-source framework containing the best ideas in 
+<u>jQuery</u> development.<br><br>
+It guides you to successfully completed projects by promoting <u>best practices</u>, 
+<u>maintainability</u>, and <u>convention over configuration</u>.</q>
+<div class='author'>JavaScriptMVC</div>
+</article>
+
+<article data-xref='a[name="id.7jj8iqnwlap4"]'>
+<h3>JMVC esta formado por diferentes módulos</h3>
+<ul>
+  <li>Convention over Configuration</li>
+  <li>Model-View-Controller</li>
+  <li>Gestor de dependencias</li>
+  <li>Framework de testing</li>
+  <li>Framework de documentación</li>
+  <li>Otros: utilidades de linea de comandos, empaquetado para producción,
+    generación de código, librería de plugins, etc.</li>
+</ul>
+</article>
+
+<article data-xref='a[name="h.w2t6ppvjkw0"]'>
+<h3>Convenciones: Estructura de directorios, recursos</h3>
+<q>Divide et vinces</q>
+<div class='author'>Julio César</div>
+<pre>
+\tabs
+  tabs.js        - código para el widget tabs 
+  tabs.html      - pagina demostración del widget
+  funcunit.html  - pagina para lanzar test
+  tabs_test.js   - código de los test
+  tabs.css       - css para el widget tabs
+</pre>
+</article>
+
+<article class='nobackground' data-xref='a[name="id.o1xiznkh1yno"]'>
+<h3>Convenciones: Estructura de directorios, aplicaciones</h3>
+<ul>
+  <li><b>recursos:</b> modelos, controladores y plugins</li>
+  <li><b>agrupan en:</b> librería y aplicación</li>
+</ul>
+<pre>
+\cms
+  \models    - models for the CMS
+  \views     - views to configure the grid
+  cms.js
+\jupiter
+  \tabs      - a basic tabs widget
+  \edit      - binds a form to edit a model instance
+  \grid      - a configurable grid
+    \views
+\steall
+\jquery
+\funcinit
+\documentjs
+\js          - java script executable
+</pre>
+</article>
+
+<article>
+<h3>Gestión de dependencias</h3>
+<p>StealJS se encarga de la gestión de dependencias, pero tambíen aporta
+  la generación de código, minimizado JS/CSS, logging, etc.</p>
+<pre>
+// cargar dependencias
+steal('jupiter/tabs',
+      'jupiter/grid',
+      'jupiter/create',
+      './models/image',
+      './models/video',
+      './models/article'
+      'steal /less'
+      ).then(
+      './cms.less'
+    ,function(){
+</pre>
+</article>
+
+<article>
+<h3>Modelo – Vista – Controlador</h3>
+JMVC propone una arquitectura por capas
+<ul>
+<li>Ajax / Domain Model - Modelo
+<li>Client Side Templates - Vista
+<li>Eventos / Plugin – Controlador
+</ul>
+</article>
+
+<article>
+<h3>Modelo</h3>
+<p>Encapsulan las peticiones Ajax y la gestión de entidades</p>
+<pre>
+$.Model('Todo',{
+  findAll: 'GET /todos.json',
+  findOne: 'GET /todos/{id}.json',
+  create:  'POST /todos.json',
+  update:  'PUT /todos/{id}.json',
+  destroy: 'DELETE /todos/{id}.json'
+},{});
+</pre>  
+<p>Operaciónes CRUD en servidores RESTful <i>out of the box</i></p>
+</article>
+
+<article>
+<h3>Controlador</h3>
+<p>Los controladores ayudan a</p>
+<ul>
+<li>Organizar el código
+<li>Generación rápida de plugins/widgets jQuery
+<li>Evitar problemas de memoria
+</ul>
+<pre>
+$.Controller('Tabs',{
+  click: function() {...},
+  '.tab click' : function() {...},
+  '.delete click' : function() {...}
+})
+$('#tabs').tabs();
+</pre>  
+</article>
+
+<article>
+<h3>Vista</h3>
+<p>Las vistas se generán a través de plantillas</p>  
+<pre>$("#foo").html('//path/to/template.ejs', data);</pre>
+<p>JavaScriptMVC soporta EmbeddedJS, JAML, Micro, jQuery.Tmpl...</p>
+<pre>
+&lt;%for(var i = 0; i &lt; this.length ; i++){%&gt;
+  &lt;li &lt;%= this[i]%&gt;&gt;
+    &lt;%== $.View('//slides/presentation/list/views/presentation.ejs', 
+                this[i] )%&gt;
+  &lt;/li&gt;
+&lt;%}%&gt;
+</pre>
+</article>
+
+<article>
+<h3>Integración de las vistas</h3>
+<p>Contructor del controlador del dialogo de configuración</p>
+<pre>init : function(){  this.element.html(this.view()); }</pre>
+<ul>
+<li>init es un metodo que es llamado al instanciar el widget
+<li>this es una referencia al objeto, y element a elemento DOM
+<li>view genera la vista, por defecto usa la plantilla init.ejs
+</ul>
+<pre>$('#todos').html("todos.ejs",Todo.findAll());</pre>
+<p>Representa la plantilla todos.ejs a partir de todos los todos obtenidos
+  del servidor</p>
+</article>
+
+<article>
+<h3>Testing, documentación y librería</h3>
+<ul>
+<li>Testing<pre style='margin-top: 7px'>
+S.open("//myapp/myapp.html");
+S("#search").click().type("Hello World");
+</pre>
+<li>Documentación<pre style='margin-top: 7px'>
+js myapp/scripts/docs.js
+</pre>
+<li>Librerías<pre style='margin-top: 7px'>
+$("#panel").outerWidth(500);
+$("#items").delegate(".item","draginit",function(){});
+$.Class("MyNamespace.MyClass",{},{});
+new MyNamespace.MyClass()
+</pre>
+  
+</ul>
+</article>
+
+<!------------------------------------------------------------- Conclusiones -->
+<article class='fill'>
+<h3>Conclusiones</h3>
+<p><img src='./images/example-cat.jpg'></p>
+</article>
+  
+    
+      
+      
+<article>
+<h3>Dudas</h3>
+<p style='margin-top:0'>
+<img style='width: 600px' src='images/dudas.jpg' class="centered">
+</p>
+</article>
          
-	  <article>
-        <h3>Procesamiento de acciones</h3>
-        <ul>
-          <li>
-          Tras procesar los parámetros se extrae tantos argumentos
-          como parámetros procesados, quedando en <code>$1</code>
-          la acción ha realizar
-          <pre>
-case $1 in 
-  depends) DEPENDS;;
-recomends) RECOMENDS;;
-      all) ALL;;
-        *) echo "dpkg-counter: acción invalida -- '$1'"; USAGE;;
-esac</pre>
-		  Se delega a cada función especifica la ejecución
-          </li>
-        </ul>
-      </article>
-
-      <article class='fill'>
-        <h3>Ejemplos</h3>
-        <p><img src='./images/ejemplos.jpg'></p>
-      </article>  
-      
-      <article>
-        <h3>Ejecución sin argumentos o argumentos erróneos</h3>
-        <p>
-          <pre>
-$ dpkg-counter 
-dpkg-counter: acción invalida -- ''
-Usage:	dpkg-counter [OPTONS]... [ACTION]
-Actions:
-  depends: Muestra una lista de paquetes y el numero de dependencias
-  recomends: Muestra una lista de paquetes y el numero que lo recomiendan
-  all: Muestra la suma de depends y recomends
-Options:
-  -f <filtro>: filtra la busqueda de paquetes con el parametro filtro
-  -m <metodo>: metodo de calculo de la acción all [ dpkg*, recursive ]
-		  </pre>
-        </p>
-      </article>  
-      
-      <article>
-        <h3>Ejecución de una acción</h3>
-        <p>
-          <pre>
-$ dpkg-counter recomends
-...
-xsidplay 1
-xsltproc 0
-xterm 0
-x-terminal-emulator 1
-xtrans-dev 0
-x-ttcidfont-conf 5
-...
-		  </pre>
-        </p>
-      </article>  
-      
-            <article>
-        <h3>Comparación entre métodos de cálculo de <code>all</code></h3>
-        <p>
-          <pre>
-$ dpkg-counter -m recursive all >tmp1 && \ 
-  dpkg-counter -m dpkg all >tmp2 && \
-  diff -y tmp1 tmp2
-abiword 1                      abiword 1
-accountsservice 4              accountsservice 4
-acl 1                          acl 1
-acpid 2                        acpid 2
-acpi-support 0                 acpi-support 0
-acroread-common 0              acroread-common 0
-adduser 37                     adduser 37
-adium-theme-ubuntu 1           adium-theme-ubuntu 1
-aisleriot 1                    aisleriot 1
-akonadi-backend-mysql 2        akonadi-backend-mysql 2
-...
-		  </pre>
-        </p>
-      </article>
-      
-            <article>
-        <h3>Combinación para obtener los paquetes más recomendados</h3>
-        <p>
-          <pre>
-$ dpkg-counter all | awk '{print $2,$1}' | sort -nr | head
-2023 libc6
-687 libglib2.0-0
-439 libstdc++6
-395 python
-332 libgcc1
-288 libx11-6
-262 libgdk-pixbuf2.0-0
-243 libcairo2
-221 libpango1.0-0
-216 zlib1g
-		  </pre>
-        </p>
-      </article>
-      
-      <article class="fill">
-        <h3>Gracias!</h3>
-        <p><img src='./images/gracias.jpg'></p>
-      </article>
+<article class="fill">
+<h3>Gracias!</h3>
+<p><img src='./images/gracias.jpg'></p>
+</article>
        
-      <article class='fill'>
-        <iframe style="zoom:133%" src='script.html'></iframe>
-      </article>
      
-    </section>
-    
-    <div id="config-dialog" title="Configurar" style="display: none"></div>
-    <div id="side-notes" title="Notas" style="display: none"></div>
-    <button id="config-button">Configurar</button>
-    <button id="left-button">Anterior</button>
-    <button id="right-button">Siguiente</button>
-    
-    <script type='text/javascript' src='../steal/steal.js?slides'></script>
+</section>
 
-  </body>
+<div id="config-dialog" title="Configurar" style="display: none"></div>
+<div id="side-notes" title="Notas" style="display: none"></div>
+<button id="config-button">Configurar</button>
+<button id="left-button">Anterior</button>
+<button id="right-button">Siguiente</button>
+
+<script type='text/javascript' src='../steal/steal.js?slides'></script>
+
+</body>
 </html>
