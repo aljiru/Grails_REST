@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Presentation Javascript MVC</title>
+
+<meta charset='utf-8'>
+<script src='../slides.js'></script>
+</head>
+
+<body style='display: none'>
+
+	<section id='slides' class='slides layout-regular template-inftel'>
+
+		<article data-xref='a[name="h.qozgn9l1wzi5"]'>
+			<h3>Sistema de gestión de paquetes</h3>
+			<p>En la década de los 90 Roy T. Fielding realizó un estudio en
+				el que buscaba el estilo arquitectónico que más propiedades aportara
+				a sistemas en Red basados en Hypermedia.</p>
+			<p>El estilo más prometedor fue
+				Layered-Code-on-Demand-Client-Cache-Stateless-Server (LCODC$SS).</p>
+			<p>
+				<img src="images/roy.jpg" />
+			</p>
+		</article>
+
+		<article data-xref='a[name="h.tcb3v3svwd1g"]'>
+			<h3>Dependencias de los paquetes</h3>
+			<p>
+				Cada paquete contiene una lista de <b>dependencias</b> y una lista
+				de <b>sugerencias</b>
+			</p>
+			<p>
+				<img style='width: 95%' src='./images/paquetes.svg'>
+			</p>
+		</article>
+
+		<article data-xref='a[name="h.yx22ozb8qvzw"]'>
+			<h3>dpkg-query</h3>
+			<p>
+				Es una de las muchas herramientas de gestión de paquetes que se
+				pueden encontrar en linux<br> <br> Sirve para consultar la
+				base de datos de paquetes<br>
+			<pre>
+~$ dpkg-query -l zlib1
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                          Version                       Description
++++-=============================-=============================-==========================================================================
+un  zlib1                         <none>                        (no description available)
+			
+			
+			
+			
+			
+			</pre>
+			</p>
+			<div class="build">
+				<div class="yellow-background">Permite consultar las
+					dependencias y sugerencias</div>
+			</div>
+		</article>
+
+		<article data-xref='a[name="h.i1gdrwqnbzuo"]'>
+			<h3>Dependencias de los paquetes</h3>
+			<p>
+				Cada paquete contiene una lista de <b>dependencias</b> y una lista
+				de <b>sugerencias</b>
+			</p>
+			<p>
+				<img style='width: 95%' src='./images/paquetes.svg'>
+			</p>
+		</article>
+
+		<article data-xref='a[name="h.e0bxyp5jtxo6"]'>
+			<h3>Dependencias de los paquetes</h3>
+			<p>
+				Cada paquete contiene una lista de <b>dependencias</b> y una lista
+				de <b>sugerencias</b>
+			</p>
+			<p>
+				<img style='width: 95%' src='./images/paquetes.svg'>
+			</p>
+		</article>
+
+	</section>
+
+	<div id="config-dialog" title="Configurar" style="display: none"></div>
+	<div id="side-notes" title="Notas" style="display: none"></div>
+	<button id="config-button">Configurar</button>
+	<button id="left-button">Anterior</button>
+	<button id="right-button">Siguiente</button>
+
+	<script type='text/javascript' src='../steal/steal.js?slides'></script>
+
+</body>
+</html>
