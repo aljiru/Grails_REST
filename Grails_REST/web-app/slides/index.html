@@ -83,6 +83,17 @@ Identifican de forma inequívoca a recursos dentro de la Web.</li>
 </ul>
 </article>
 
+<article data-xref='a[name=id.baivdhgajd3"]'>
+<h3>Características de un aplicación para RESTful HTTP</h3>
+<ul>
+<li><b>Darle a todas las “cosas” un ID</b>: Todos los recursos que deban ser identificables deben poseer una URI propia.</li>
+<li>Utilizar links para enlazar las “cosas”.</li>
+<li>Usar métodos estándar.</li>
+<li>Recursos con múltiples representaciones</li>
+<li>Usar comunicaciones sin estado.</li>
+</ul>
+</article>
+
 <article data-xref='a[name="h.i1gdrwqnbzuo"]'>
 <h3>Introducción a Servicios REST</h3>
 <p>Historicamente lo comunicación remota entre componentes ha
@@ -108,7 +119,7 @@ compartir información del usuario</p>
 <p>REST predomina en este ámbito. Características avanzadas</p>
 <ul>
 <li>Seguridad mediante <b>OAuth</b></li>
-<li>Interfaz definidad por estándar <b>WADL</b> o <b>WSDL</b></li>
+<li>Formalización del API mediante estándar <b>WADL</b> o <b>WSDL</b></li>
 </ul>
 </article>
 
@@ -280,7 +291,7 @@ It guides you to successfully completed projects by promoting <u>best practices<
 </article>
 
 <article data-xref='a[name="id.7jj8iqnwlap4"]'>
-<h3>JMVC esta formado por diferentes módulos</h3>
+<h3>JMVC está formado por diferentes módulos</h3>
 <ul>
   <li>Convention over Configuration</li>
   <li>Model-View-Controller</li>
@@ -409,11 +420,11 @@ $('#tabs').tabs();
 
 <article data-xref='a[name="h.j2rgwwebrl91"]'>
 <h3>Integración de las vistas</h3>
-<p>Contructor del controlador del dialogo de configuración</p>
+<p>Constructor del controlador del diálogo de configuración</p>
 <pre>init : function(){  this.element.html(this.view()); }</pre>
 <ul>
-<li>init es un metodo que es llamado al instanciar el widget
-<li>this es una referencia al objeto, y element a elemento DOM
+<li>init es un método que es llamado al instanciar el widget
+<li>this es una referencia al objeto, y element al elemento DOM
 <li>view genera la vista, por defecto usa la plantilla init.ejs
 </ul>
 <pre>$('#todos').html("todos.ejs",Todo.findAll());</pre>
@@ -470,7 +481,7 @@ JMVC permite realizar las tareas de gestión JS de forma sencilla
   el uso en aplicaciones RIA
 <li>Al ser tan completo, lo hace complejo; y por tanto no es una buena opción
   para proyectos pequeños debido a su curva de aprendizaje
-<li>REST es una propuesta de organización de servicios practica y extendida
+<li>REST facilita la creación y uso de servicios web para el acceso a recursos.
 </ul>
 </article>
       
