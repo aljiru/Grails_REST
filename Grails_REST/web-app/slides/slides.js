@@ -36,6 +36,7 @@ steal(
 			console.log('calculate zoom width:' + $(window).width() + ', %:'+width);
 			
 			$('section.slides').css('zoom',width+"%");
+			$('section.slides').css('-moz-transform',"scale("+(width/100)+")");
 		}
 		
 		//$('#presentations').slides_presentation_list();
