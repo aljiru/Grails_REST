@@ -24,14 +24,19 @@ Ignacio Baca Moreno-Torres<br>
 Febrero 2012
 </p>
 </article>
-      
-<article class='fill' data-xref='0'>
+
+<article class='fill' data-xref='a[name="id.mg0omnpf1qfk"]'>
 <h3>Introducción</h3>
 <p><img src='./images/objetivos.jpg'></p>
 </article>
 
+<article data-xref='a[name="h.vtyojfr8iqmb"]'>
+<h3>JavaScriptMVC, REST y jQuery</h3>
+<img class='centered' style='margin-top: 40px' src="images/intro.png" />
+</article>
+
 <!-------------------------------------------------------------------.. REST -->
-<article class='fill'>
+<article class='fill' data-xref='a[name="h.qozgn9l1wzi5"]'>
 <h3>Representational State Transfer</h3>
 <p><img src='./images/problema.jpg'></p>
 </article>   
@@ -130,7 +135,7 @@ def findOne() {
 </article>
 
 <!------------------------------------------------------------------- jQuery -->
-<article class='fill'>
+<article class='fill' data-xref='a[name="h.cpjxnrup6gzc"]'>
 <h3>jQuery</h3>
 <p><img src='./images/destacado.jpg'></p>
 </article>
@@ -269,6 +274,11 @@ It guides you to successfully completed projects by promoting <u>best practices<
 <div class='author'>JavaScriptMVC</div>
 </article>
 
+<article class='nobackground'>
+<h3>¿Quien usa JavaScriptMVC?</h3>
+<iframe src='http://grooveshark.com/#!/artist/Coldplay/61'></iframe>
+</article>
+
 <article data-xref='a[name="id.7jj8iqnwlap4"]'>
 <h3>JMVC esta formado por diferentes módulos</h3>
 <ul>
@@ -320,7 +330,7 @@ It guides you to successfully completed projects by promoting <u>best practices<
 </pre>
 </article>
 
-<article>
+<article data-xref='a[name="h.ovmgg3l05ej7"]'>
 <h3>Gestión de dependencias</h3>
 <p>StealJS se encarga de la gestión de dependencias, pero tambíen aporta
   la generación de código, minimizado JS/CSS, logging, etc.</p>
@@ -339,7 +349,7 @@ steal('jupiter/tabs',
 </pre>
 </article>
 
-<article>
+<article data-xref='a[name="h.kgyyqsh8klu3"]'>
 <h3>Modelo – Vista – Controlador</h3>
 JMVC propone una arquitectura por capas
 <ul>
@@ -349,7 +359,7 @@ JMVC propone una arquitectura por capas
 </ul>
 </article>
 
-<article>
+<article data-xref='a[name="h.joywljy3v72n"]'>
 <h3>Modelo</h3>
 <p>Encapsulan las peticiones Ajax y la gestión de entidades</p>
 <pre>
@@ -364,7 +374,7 @@ $.Model('Todo',{
 <p>Operaciónes CRUD en servidores RESTful <i>out of the box</i></p>
 </article>
 
-<article>
+<article data-xref='a[name="h.3w9wjt43wzab"]'>
 <h3>Controlador</h3>
 <p>Los controladores ayudan a</p>
 <ul>
@@ -382,7 +392,7 @@ $('#tabs').tabs();
 </pre>  
 </article>
 
-<article>
+<article data-xref='a[name="h.gj2w9c5468ps"]'>
 <h3>Vista</h3>
 <p>Las vistas se generán a través de plantillas</p>  
 <pre>$("#foo").html('//path/to/template.ejs', data);</pre>
@@ -397,7 +407,7 @@ $('#tabs').tabs();
 </pre>
 </article>
 
-<article>
+<article data-xref='a[name="h.j2rgwwebrl91"]'>
 <h3>Integración de las vistas</h3>
 <p>Contructor del controlador del dialogo de configuración</p>
 <pre>init : function(){  this.element.html(this.view()); }</pre>
@@ -411,7 +421,7 @@ $('#tabs').tabs();
   del servidor</p>
 </article>
 
-<article>
+<article data-xref='a[name="h.izos29c3mf5o"]'>
 <h3>Testing, documentación y librería</h3>
 <ul>
 <li>Testing<pre style='margin-top: 7px'>
@@ -427,18 +437,42 @@ $("#items").delegate(".item","draginit",function(){});
 $.Class("MyNamespace.MyClass",{},{});
 new MyNamespace.MyClass()
 </pre>
-  
 </ul>
 </article>
 
+<article data-xref='a[name="h.z81sdhauy8rk"]'>
+<h3>JavaScriptMVC, en resumen</h3>
+JMVC permite realizar las tareas de gestión JS de forma sencilla
+<ul>
+<li>Test unitarios y funcionales automaticos
+<li>Dividir el código y organizarlo
+<li>Comprimir y concatenar JS/CSS
+<li>Plantillas en el lado cliente
+<li>Plugins jQuery bien organizados
+<li>Gestión de errores
+<li>Documentación
+<li>Crawl
+<li>y más...
+</ul>  
+</article>
+
 <!------------------------------------------------------------- Conclusiones -->
-<article class='fill'>
+<article class='fill' data-xref='a[name="h.74nwctaqq4jh"]'>
 <h3>Conclusiones</h3>
 <p><img src='./images/example-cat.jpg'></p>
 </article>
-  
-    
-      
+<article class='fill' data-xref='a[name="h.74nwctaqq4jh"]'>
+<h3>Conclusiones</h3>
+<ul>
+<li>jQuery es una excelente librería, pero cuando las aplicaciones crecen
+  carece de la herramientas necesarias para la gestión del proyecto
+<li>JavaScriptMVC es un framework completo que sin duda mejora jQuery para
+  el uso en aplicaciones RIA
+<li>Al ser tan completo, lo hace complejo; y por tanto no es una buena opción
+  para proyectos pequeños debido a su curva de aprendizaje
+<li>REST es una propuesta de organización de servicios practica y extendida
+</ul>
+</article>
       
 <article>
 <h3>Dudas</h3>
@@ -447,14 +481,14 @@ new MyNamespace.MyClass()
 </p>
 </article>
          
-<article class="fill">
+<article class="fill" data-xref='0'>
 <h3>Gracias!</h3>
 <p><img src='./images/gracias.jpg'></p>
 </article>
-       
      
 </section>
 
+<!----------------------------------------------------------------- Internal -->
 <div id="config-dialog" title="Configurar" style="display: none"></div>
 <div id="side-notes" title="Notas" style="display: none"></div>
 <button id="config-button">Configurar</button>

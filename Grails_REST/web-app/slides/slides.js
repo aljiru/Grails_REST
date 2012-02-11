@@ -81,9 +81,10 @@ steal(
 				// se eliminan los build porq los view no van por pasos
 				$('.build').removeClass('build');
 				$('.to-build').show().removeClass('to-build');
-				$('#side-notes').load('https://docs.google.com/document/pub?id=1eX6pn1gBDpvYuNTNNVijoUMileOJhikopy9edf3ToHU', function(){
+				//$('#side-notes').load('https://docs.google.com/document/pub?id=1eX6pn1gBDpvYuNTNNVijoUMileOJhikopy9edf3ToHU', function(){
+				$('#side-notes').load('framwroks-doc.htm', function(){
 					$(this).fadeIn().find('img').each(function(){
-						$(this).attr('src','https://docs.google.com/document/'+$(this).attr('src'));
+						//$(this).attr('src','https://docs.google.com/document/'+$(this).attr('src'));
 						$(this).attr('height','');
 						$(this).attr('width','');
 					});
